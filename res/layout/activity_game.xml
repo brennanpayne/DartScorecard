@@ -22,27 +22,27 @@
         android:layout_marginTop="97dp" >
 
         <RadioButton
-            android:id="@+id/2player"
+            android:id="@+id/twoPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="2 Players" />
 
         <RadioButton
-            android:id="@+id/3player"
+            android:id="@+id/threePlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3 Players" />
 
         <RadioButton
-            android:id="@+id/4player"
+            android:id="@+id/fourPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4 Players" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/radioGroup1"
