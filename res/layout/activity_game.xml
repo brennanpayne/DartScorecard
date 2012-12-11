@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="Select the number of players" />
+
+    <RadioGroup
+        android:id="@+id/rPlayerGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp" >
+
+        <RadioButton
+            android:id="@+id/2player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="2 Players" />
+
+        <RadioButton
+            android:id="@+id/3player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 Players" />
+
+        <RadioButton
+            android:id="@+id/4player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 Players" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="Start" />
+
+</RelativeLayout>
