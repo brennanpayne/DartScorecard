@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 		Intent intent = null;
 		switch(view.getId()){
 		case R.id.hammerCricket:
-			intent = new Intent(MainActivity.this, NumPlayersActivity.class);
+			intent = new Intent(MainActivity.this, SettingsActivity.class);
 			intent.putExtra("gameType","hammerCricket");
 			break;
 		default:

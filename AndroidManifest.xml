@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.brennan.dartscorecard.NumPlayersActivity"
+            android:name="com.brennan.dartscorecard.SettingsActivity"
             android:label="@string/title_activity_hammer_game" >
         </activity>
         <activity

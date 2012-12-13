@@ -13,7 +13,7 @@ import com.brennan.dartscorecard.R;
 import com.brennan.gamelogic.HammerGame;
 import com.brennan.gamelogic.Player;
 
-public class NumPlayersActivity extends Activity {
+public class SettingsActivity extends Activity {
 	private static final String TAG = "GameActivity"; 
 	Button startButton;
 	private String gameType;
@@ -25,7 +25,7 @@ public class NumPlayersActivity extends Activity {
 		if(extras != null){
 			gameType = extras.getString("gameType");
 		}
-		setContentView(R.layout.activity_numplayers);
+		setContentView(R.layout.activity_settings);
 		startButton = (Button) findViewById(R.id.startButton);
 		startButton.setOnClickListener(startHandler);
 	}
@@ -33,7 +33,7 @@ public class NumPlayersActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_game, menu);
+		getMenuInflater().inflate(R.menu.activity_settings, menu);
 		return true;
 	}
 	
