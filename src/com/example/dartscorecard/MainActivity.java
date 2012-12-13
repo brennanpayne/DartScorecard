@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import com.brennan.dartscorecard.R;
 
 public class MainActivity extends Activity {
 
@@ -22,7 +23,16 @@ public class MainActivity extends Activity {
 	}
 
 	public void startGame(View view){
-		Intent intent = new Intent(MainActivity.this, GameActivity.class);
+		Intent intent = null;
+		switch(view.getId()){
+		case R.id.hammerCricket:
+			intent = new Intent(MainActivity.this, NumPlayersActivity.class);
+			intent.putExtra("gameType","hammerCricket");
+			break;
+		default:
+			throw new RuntimeException("Unknown button ID");
+		}
 		MainActivity.this.startActivity(intent);	
 	}
 }
+

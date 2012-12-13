@@ -14,13 +14,13 @@
         android:text="Welcome to darts dude!" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/hammerCricket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="26dp"
         android:onClick="startGame"
-        android:text="Start a game" />
+        android:text="Hammer Cricket" />
 
 </RelativeLayout>
