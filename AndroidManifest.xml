@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="16" />
+        android:targetSdkVersion="17" />
 
     <application
         android:allowBackup="true"
@@ -14,12 +14,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.dartscorecard.LoginActivity"
+            android:name="com.brennan.dartscorecard.LoginActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
-            android:name="com.example.dartscorecard.MainActivity"
+            android:name="com.brennan.dartscorecard.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.dartscorecard.NumPlayersActivity"
-            android:label="@string/title_activity_game" >
+            android:name="com.brennan.dartscorecard.NumPlayersActivity"
+            android:label="@string/title_activity_hammer_game" >
         </activity>
         <activity
-            android:name="com.example.dartscorecard.HammerGameActivity"
+            android:name="com.brennan.dartscorecard.HammerGameActivity"
             android:label="@string/title_activity_hammer_game" >
         </activity>
     </application>

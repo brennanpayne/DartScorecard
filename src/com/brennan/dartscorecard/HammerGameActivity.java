@@ -1,4 +1,4 @@
-package com.example.dartscorecard;
+package com.brennan.dartscorecard;
 
 import android.os.Bundle;
 import android.app.Activity;
