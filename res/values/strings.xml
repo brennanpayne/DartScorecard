@@ -6,5 +6,6 @@
     <string name="title_activity_main">Select a game</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_hammer_game">Hammer Cricket</string>
+    <string name="settings_text">Select the number of players</string>
 
 </resources>

@@ -2,52 +2,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity" >
+    tools:context=".SettingActivity" 
+    android:id="@+id/relativeLayoutSettings"
+    >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/settingsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
-        android:text="Select the number of players" />
+        android:text="@string/settings_text" />
 
-    <RadioGroup
-        android:id="@+id/rPlayerGroup"
+    <EditText
+        android:id="@+id/playerOneInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/settingsText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="97dp" >
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:inputType="textPersonName" >
+        
+        <requestFocus />
+    </EditText>
 
-        <RadioButton
-            android:id="@+id/twoPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="2 Players" />
+    <EditText
+        android:id="@+id/playerTwoInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/playerOneInput"
+        android:layout_below="@+id/playerOneInput"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+    
+    <EditText
+        android:id="@+id/playerThreeInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/playerTwoInput"
+        android:layout_below="@+id/playerTwoInput"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
-        <RadioButton
-            android:id="@+id/threePlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3 Players" />
-
-        <RadioButton
-            android:id="@+id/fourPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4 Players" />
-    </RadioGroup>
-
+    <EditText
+        android:id="@+id/playerFourInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/playerThreeInput"
+        android:layout_below="@+id/playerThreeInput"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+    
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rPlayerGroup"
+        android:layout_below="@+id/playerFourInput"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="32dp"
         android:text="Start" />
+
+    <Button
+        android:id="@+id/addMorePlayersButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/playerOneInput"
+        android:layout_below="@+id/playerFourInput"
+        android:text="Add+" />
+
+    <Button
+        android:id="@+id/lessPlayersButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playerFourInput"
+        android:layout_alignLeft="@+id/playerOneInput"
+        android:text="Less-" />
 
 </RelativeLayout>
