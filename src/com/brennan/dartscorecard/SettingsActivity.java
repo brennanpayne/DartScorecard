@@ -1,5 +1,7 @@
 package com.brennan.dartscorecard;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -89,7 +91,7 @@ public class SettingsActivity extends Activity {
 		
 		@Override
 		public void onClick(View v) {
-			numPlayers--;
+			
 			removePreviousPlayerField();
 			if (numPlayers <= 1){
 				mLessPlayersButton.setVisibility(View.INVISIBLE);
@@ -109,16 +111,17 @@ public class SettingsActivity extends Activity {
 			
 			Log.i(TAG, "Creating " + numPlayers + " players");
 			
-			HammerGame game = new HammerGame();
+			ArrayList<Player> players = new ArrayList<Player>();
 			for(int i = 0; i < numPlayers; i++){
-				Player p = new Player("Player " + (i+1));
-				game.addPlayer(p);
+				Player p = new Player(mPlayerNames[i].getText().toString());
+				if(p.getName().equals(""))
+					p.setName("Player " + numPlayers);
+				players.add(p);
 			}
 			
 			Log.i(TAG, "Created players and added them to game");
 			Intent intent = new Intent(getBaseContext(), HammerGameActivity.class);
-			intent.putExtra("numPlayers", numPlayers);
-			intent.putExtra("game", game);
+			intent.putParcelableArrayListExtra("players", players);
 			startActivity(intent);
 		}
 	};

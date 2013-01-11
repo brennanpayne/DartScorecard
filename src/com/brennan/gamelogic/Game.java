@@ -2,6 +2,8 @@ package com.brennan.gamelogic;
 
 import java.util.ArrayList;
 
+
+
 abstract class Game {
 
 	private ArrayList<Player> players;
@@ -23,6 +25,12 @@ abstract class Game {
 	
 	public void addPlayer(Player p){
 		players.add(p);
+	}
+	
+	public void addPlayers(ArrayList<Player> players){
+		for(int i = 0; i < players.size(); i++){
+			addPlayer(players.get(i));
+		}
 	}
 
 
