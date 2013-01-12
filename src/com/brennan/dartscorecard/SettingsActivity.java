@@ -10,33 +10,21 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.brennan.gamelogic.HammerGame;
 import com.brennan.gamelogic.Player;
 
 public class SettingsActivity extends Activity {
-	private RelativeLayout mLayout;
 	private EditText[] mPlayerNames;
 	private Button mAddMorePlayersButton, mLessPlayersButton, mStartButton;
 	private int numPlayers;
 	
 	private static final String TAG = "GameActivity"; 
-	private String gameType;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		//Retrieve extras
-		Bundle extras = getIntent().getExtras();
-		if(extras != null){
-			gameType = extras.getString("gameType");
-		}
+
 		numPlayers = 1;
-		
-		//Set Layout
 		setContentView(R.layout.activity_settings);
-		mLayout = (RelativeLayout) findViewById(R.id.relativeLayoutSettings);
 		
 		//The edit texts of the players name
 		//There is probably a better way to do this than creating and hiding all edit texts
@@ -91,7 +79,7 @@ public class SettingsActivity extends Activity {
 		
 		@Override
 		public void onClick(View v) {
-			
+			numPlayers--;
 			removePreviousPlayerField();
 			if (numPlayers <= 1){
 				mLessPlayersButton.setVisibility(View.INVISIBLE);
