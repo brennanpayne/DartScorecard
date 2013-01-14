@@ -26,10 +26,13 @@ public class Player implements Parcelable{
 		this.score = score;
 	}
 	
+	//Standard Constructor
 	public Player(String name){
 		this.name = name;
+		this.score = 0;
 	}
 	
+	//Constructor for parcelable objects
 	public Player(Parcel in){
 		readFromParcel(in);
 	}

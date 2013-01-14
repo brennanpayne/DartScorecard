@@ -7,5 +7,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_hammer_game">Hammer Cricket</string>
     <string name="settings_text">Select the number of players</string>
+    <string name="start_button">Start</string>
+    <string name="round_title_text">Current Round</string>
+    <string name="round_mark_text">20</string>
 
 </resources>

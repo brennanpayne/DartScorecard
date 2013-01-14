@@ -1,14 +1,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HammerGameActivity" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="HammerTime" />
+
+    <TextView
+        android:id="@+id/round_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/round_title_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/round_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/round_title"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="@string/round_mark_text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="80sp" 
+        android:textColor="@color/red" />
 
 </RelativeLayout>
