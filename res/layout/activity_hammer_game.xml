@@ -36,12 +36,22 @@
         android:text="Next Turn" />
 
     <Button
+        android:id="@+id/prev_turn_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart1times3"
+        android:layout_alignBottom="@+id/dart1times3"
+        android:layout_alignRight="@+id/next_turn_button"
+        android:text="Prev Turn" />
+
+    <Button
         android:id="@+id/dart2times1"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dartOnetimesOne"
-        android:layout_alignBottom="@+id/dartOnetimesOne"
+        android:layout_alignBaseline="@+id/dart1times1"
+        android:layout_alignBottom="@+id/dart1times1"
         android:layout_alignRight="@+id/round_title"
         android:text="x1" />
 
@@ -113,7 +123,7 @@
         android:text="x3" />
 
     <Button
-        android:id="@+id/dartOnetimesOne"
+        android:id="@+id/dart1times1"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,21 +155,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/light_green" />
 
-    <Button
-        android:id="@+id/prev_turn_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart1times3"
-        android:layout_alignBottom="@+id/dart1times3"
-        android:layout_alignRight="@+id/next_turn_button"
-        android:text="Prev Turn" />
-
     <TextView
         android:id="@+id/dart1_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/dartOnetimesOne"
+        android:layout_above="@+id/dart1times1"
         android:layout_centerHorizontal="true"
         android:text="x1"
         android:textAppearance="?android:attr/textAppearanceMedium"

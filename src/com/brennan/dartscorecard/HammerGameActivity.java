@@ -39,7 +39,7 @@ public class HammerGameActivity extends Activity {
 			players = extras.getParcelableArrayList("players");
 		}
 
-		Log.v(TAG,"Recived players in intent");
+		Log.v(TAG,"Recived players in Hammer Game");
 
 		game = new HammerGame();
 		game.addPlayers(players);
