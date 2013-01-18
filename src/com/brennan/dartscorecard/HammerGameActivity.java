@@ -132,7 +132,7 @@ public class HammerGameActivity extends Activity {
 
 	
 	public void checkMultiplers(){
-		if(game.getCurrentRound() == 3 || game.getCurrentRound() == 7){
+		if(game.getCurrentRound() == 7){
 			dart2_text.setText("x3");
 			dart3_text.setText("x5");
 		}else{
