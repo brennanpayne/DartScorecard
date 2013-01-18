@@ -6,20 +6,11 @@
     tools:context=".HammerGameActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/round_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="HammerTime" />
-
-    <TextView
-        android:id="@+id/round_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
         android:text="@string/round_title_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -27,12 +18,151 @@
         android:id="@+id/round_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/round_title"
-        android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_marginLeft="17dp"
         android:text="@string/round_mark_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="80sp" 
-        android:textColor="@color/red" />
+        android:textColor="@color/red"
+        android:textSize="80sp" />
+
+    <Button
+        android:id="@+id/next_turn_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/round_mark"
+        android:layout_below="@+id/round_mark"
+        android:text="Next Turn" />
+
+    <Button
+        android:id="@+id/dart2times1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dartOnetimesOne"
+        android:layout_alignBottom="@+id/dartOnetimesOne"
+        android:layout_alignRight="@+id/round_title"
+        android:text="x1" />
+
+    <Button
+        android:id="@+id/dart3times1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart2times1"
+        android:layout_alignBottom="@+id/dart2times1"
+        android:layout_toRightOf="@+id/dart2times1"
+        android:text="x1" />
+
+    <Button
+        android:id="@+id/dart1times2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dart2times1"
+        android:layout_toLeftOf="@+id/dart2times1"
+        android:text="x2" />
+
+    <Button
+        android:id="@+id/dart3times2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart1times2"
+        android:layout_alignBottom="@+id/dart1times2"
+        android:layout_alignLeft="@+id/dart3times1"
+        android:text="x2" />
+
+    <Button
+        android:id="@+id/dart2times2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart3times2"
+        android:layout_alignBottom="@+id/dart3times2"
+        android:layout_toLeftOf="@+id/dart3times2"
+        android:text="x2" />
+
+    <Button
+        android:id="@+id/dart1times3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dart1times2"
+        android:layout_toLeftOf="@+id/dart2times2"
+        android:text="x3" />
+
+    <Button
+        android:id="@+id/dart3times3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dart3times2"
+        android:layout_below="@+id/dart3times2"
+        android:text="x3" />
+
+    <Button
+        android:id="@+id/dart2times3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart3times3"
+        android:layout_alignBottom="@+id/dart3times3"
+        android:layout_toLeftOf="@+id/dart3times3"
+        android:text="x3" />
+
+    <Button
+        android:id="@+id/dartOnetimesOne"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/next_turn_button"
+        android:layout_toLeftOf="@+id/dart2times1"
+        android:text="x1" />
+
+    <TextView
+        android:id="@+id/dart2_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart1_text"
+        android:layout_alignBottom="@+id/dart1_text"
+        android:layout_alignLeft="@+id/dart2times1"
+        android:layout_marginLeft="14dp"
+        android:text="x2"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/light_green" />
+
+    <TextView
+        android:id="@+id/dart3_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart2_text"
+        android:layout_alignBottom="@+id/dart2_text"
+        android:layout_alignRight="@+id/dart3times1"
+        android:layout_marginRight="14dp"
+        android:text="x3"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/light_green" />
+
+    <Button
+        android:id="@+id/prev_turn_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dart1times3"
+        android:layout_alignBottom="@+id/dart1times3"
+        android:layout_alignRight="@+id/next_turn_button"
+        android:text="Prev Turn" />
+
+    <TextView
+        android:id="@+id/dart1_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dartOnetimesOne"
+        android:layout_centerHorizontal="true"
+        android:text="x1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/light_green" />
 
 </RelativeLayout>

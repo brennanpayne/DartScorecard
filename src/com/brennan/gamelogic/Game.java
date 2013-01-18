@@ -8,10 +8,12 @@ abstract class Game {
 
 	private ArrayList<Player> players;
 	private ArrayList<Integer> marks;
+	private Integer currentRound;
 	
 	public Game(){
 		players = new ArrayList<Player>();
 		marks = new ArrayList<Integer>();
+		currentRound = 0;
 	}
 
 
@@ -41,6 +43,16 @@ abstract class Game {
 
 	public void setMarks(ArrayList<Integer> marks) {
 		this.marks = marks;
+	}
+
+
+	public Integer getCurrentRound() {
+		return currentRound;
+	}
+
+
+	public void setCurrentRound(Integer currentRound) {
+		this.currentRound = currentRound;
 	}
 
 }
