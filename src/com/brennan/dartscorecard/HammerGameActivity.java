@@ -23,10 +23,10 @@ public class HammerGameActivity extends Activity {
 
 
 	private static final String TAG = "HammerGameActivity";
-	private TextView round_mark;
+	private TextView round_mark, dart2_text, dart3_text;
 	private RelativeLayout mRelativeLayout;
 	ArrayList<Player> players;
-	private Button nextTurnButton;
+	private Button nextTurnButton, prevTurnButton;
 	HammerGame game;
 
 	@Override
@@ -48,8 +48,15 @@ public class HammerGameActivity extends Activity {
 		
 		mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 		round_mark = (TextView) findViewById(R.id.round_mark);
+		dart2_text = (TextView) findViewById(R.id.dart2_text);
+		dart3_text = (TextView) findViewById(R.id.dart3_text);
+		
 		nextTurnButton = (Button) findViewById(R.id.next_turn_button);
 		nextTurnButton.setOnClickListener(nextTurnHandler);
+		
+		prevTurnButton = (Button) findViewById(R.id.prev_turn_button);
+		prevTurnButton.setEnabled(false);
+		prevTurnButton.setOnClickListener(prevTurnHandler);
 		
 		//		for(int i = 0; i < players.size(); i++){
 		//			Log.v(TAG, "Player " + i + ": " + players.get(i).getName());
@@ -89,15 +96,50 @@ public class HammerGameActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			game.setCurrentRound(game.getCurrentRound() + 1);
+			prevTurnButton.setEnabled(true);
 			if(!(game.getCurrentRound() >= game.getMarks().size())){
 				round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
 			}
 			if(game.getCurrentRound() + 1 == game.getMarks().size())
-				nextTurnButton.setVisibility(View.GONE);
-			if(game.getCurrentRound() + 2 == game.getMarks().size())
-				nextTurnButton.setText("Last Round");
+				nextTurnButton.setEnabled(false);
+			
+			checkMultiplers();
 		}
 	};
+	
+	View.OnClickListener prevTurnHandler = new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			game.setCurrentRound(game.getCurrentRound() - 1);
+			nextTurnButton.setEnabled(true);
+			if(!(game.getCurrentRound() >= game.getMarks().size())){
+				round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
+			}
+			if(game.getCurrentRound() == 0)
+				prevTurnButton.setEnabled(false);
+			
+			checkMultiplers();
+		}
+	};
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_hammer_game, menu);
+		return true;
+	}
+
+	
+	public void checkMultiplers(){
+		if(game.getCurrentRound() == 3 || game.getCurrentRound() == 7){
+			dart2_text.setText("x3");
+			dart3_text.setText("x5");
+		}else{
+			dart2_text.setText("x2");
+			dart3_text.setText("x3");
+		}
+	}
 	
 	public void startGame(){
 		ArrayList<Integer> marks = game.getMarks();
@@ -107,12 +149,4 @@ public class HammerGameActivity extends Activity {
 			}
 		}
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_hammer_game, menu);
-		return true;
-	}
-
 }
