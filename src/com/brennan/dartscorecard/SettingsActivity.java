@@ -103,7 +103,7 @@ public class SettingsActivity extends Activity {
 			for(int i = 0; i < numPlayers; i++){
 				Player p = new Player(mPlayerNames[i].getText().toString());
 				if(p.getName().equals(""))
-					p.setName("Player " + numPlayers);
+					p.setName("Player " + (i + 1));
 				players.add(p);
 			}
 			
