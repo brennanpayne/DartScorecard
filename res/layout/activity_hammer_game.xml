@@ -3,7 +3,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HammerGameActivity" >
+    tools:context=".HammerGameActivity" xmlns:app="http://schemas.android.com/apk/res/com.brennan.dartscorecard">
 
     <TextView
         android:id="@+id/round_title"
@@ -164,5 +164,15 @@
         android:text="x1"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/light_green" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="101dp"
+        android:layout_toRightOf="@+id/prev_turn_button"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
