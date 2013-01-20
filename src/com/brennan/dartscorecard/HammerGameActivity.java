@@ -75,9 +75,11 @@ public class HammerGameActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			numTurns++;
+			if(numTurns + 1 == game.getMarks().size() * players.size())
+				nextTurnButton.setEnabled(false);
 			prevTurnButton.setEnabled(true);
 			
-			Log.v(TAG, "Mod: " + numTurns % players.size() + ", Turn: " + numTurns);
+			Log.v(TAG, "Mod: " + numTurns % players.size() + ", Turn: " + numTurns + ", Size: " + (game.getMarks().size() * players.size()));
 			
 			if(numTurns % players.size() == 0 ){
 				game.setCurrentRound(game.getCurrentRound() + 1);
@@ -87,8 +89,7 @@ public class HammerGameActivity extends Activity {
 				if(!(game.getCurrentRound() >= game.getMarks().size() * players.size())){
 					round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
 				}
-				if(numTurns - 1 == game.getMarks().size() * players.size())
-					nextTurnButton.setEnabled(false);
+
 
 				checkMultiplers();
 			}else{
