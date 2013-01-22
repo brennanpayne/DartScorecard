@@ -28,6 +28,7 @@ public class HammerGameActivity extends Activity {
 	private Button nextTurnButton, prevTurnButton;
 	private final Integer SELECTED_TAG = 1;
 	private final Integer UNSELECTED_TAG = 2;
+	private boolean done;
 	HammerGame game;
 
 	@Override
@@ -45,6 +46,8 @@ public class HammerGameActivity extends Activity {
 
 		mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 
+		done = false;
+		
 		//Round and multiplier text
 		round_mark = (TextView) findViewById(R.id.round_mark);
 		dart2_text = (TextView) findViewById(R.id.dart2_text);
@@ -180,23 +183,27 @@ public class HammerGameActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			numTurns++;
-			if(numTurns + 1 == game.getMarks().size() * players.size())
-				nextTurnButton.setEnabled(false);
-			prevTurnButton.setEnabled(true);
-
 			currentPlayer = numTurns % players.size();
-			Log.v(TAG, "CurrentPlayer: " + currentPlayer + ", Turn: " + numTurns);
-
+			Log.v(TAG, "CurrentPlayer: " + (currentPlayer + 1) + ", CurrentTurn: " + numTurns);
+			
+			prevTurnButton.setEnabled(true);
+			
 			prepareNextTurn();
 
-			if(currentPlayer == 0){
+			if(((currentPlayer == players.size() - 1 && numTurns != 0) || players.size() == 1) //Condition for single player
+					&& game.getCurrentRound() < game.getMarks().size() - 1){ //And isn't the last round
 				game.setCurrentRound(game.getCurrentRound() + 1);				
 
 				if(!(game.getCurrentRound() >= game.getMarks().size() * players.size()))
 					setRoundText();
 			}	
-		}
+			numTurns++;
+			if(numTurns == game.getMarks().size() * players.size()){
+				nextTurnButton.setEnabled(false);
+				//numTurns--;
+				done = true;
+			}
+		}		
 	};
 	
 	View.OnClickListener prevTurnHandler = new View.OnClickListener() {
@@ -204,24 +211,27 @@ public class HammerGameActivity extends Activity {
 		//Goes to the previous round or player
 		@Override
 		public void onClick(View v) {
-			numTurns--;
-
-			if(numTurns == 0)
-				prevTurnButton.setEnabled(false);
-			nextTurnButton.setEnabled(true);
 
 			currentPlayer = numTurns % players.size();
-			Log.v(TAG, "CurrentPlayer: " + currentPlayer + ", Turn: " + numTurns);
-
-			prepareNextTurn();
+			Log.v(TAG, "CurrentPlayer: " + (currentPlayer + 1) + ", CurrentTurn: " + numTurns);
+		
+			preparePrevTurn();
 			
-			if(currentPlayer == players.size() - 1 || players.size() == 0){				
+			if(currentPlayer == 0 && !done){				
 
 				if(game.getCurrentRound() != 0)
 					game.setCurrentRound(game.getCurrentRound() - 1);
-
+				
 				setRoundText();
-			}		
+			}	
+			
+			done = false;
+			numTurns--;
+			if(numTurns == 0)
+				prevTurnButton.setEnabled(false);
+			nextTurnButton.setEnabled(true);
+			
+
 		}
 	};
 
@@ -232,6 +242,10 @@ public class HammerGameActivity extends Activity {
 		return true;
 	}
 
+	public void preparePrevTurn(){
+		clearDarts();
+	}
+	
 	//Gets the views ready for the next turn
 	public void prepareNextTurn(){
 		int tempScore = 0, multiplier2 = -1, multiplier3 = -1;
@@ -265,7 +279,7 @@ public class HammerGameActivity extends Activity {
 	public void setRoundText(){
 		Integer mark = game.getMarks().get((game.getCurrentRound()));
 		if(mark == 25)
-			round_mark.setText("B");
+			round_mark.setText("25");
 		else
 			round_mark.setText(mark.toString());
 		checkMultiplers();		
