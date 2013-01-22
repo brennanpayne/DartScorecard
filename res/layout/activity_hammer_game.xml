@@ -49,6 +49,7 @@
     <Button
         android:id="@+id/dart2times1"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/dart1times1"
@@ -59,6 +60,7 @@
     <Button
         android:id="@+id/dart3times1"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/dart2times1"
@@ -69,6 +71,7 @@
     <Button
         android:id="@+id/dart1times2"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dart2times1"
@@ -78,6 +81,7 @@
     <Button
         android:id="@+id/dart3times2"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/dart1times2"
@@ -88,6 +92,7 @@
     <Button
         android:id="@+id/dart2times2"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/dart3times2"
@@ -98,6 +103,7 @@
     <Button
         android:id="@+id/dart1times3"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dart1times2"
@@ -107,6 +113,7 @@
     <Button
         android:id="@+id/dart3times3"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/dart3times2"
@@ -116,6 +123,7 @@
     <Button
         android:id="@+id/dart2times3"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/dart3times3"
@@ -126,6 +134,7 @@
     <Button
         android:id="@+id/dart1times1"
         style="?android:attr/buttonStyleSmall"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/next_turn_button"
@@ -168,17 +177,6 @@
         android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/playerThreeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/playerOneText"
-        android:layout_below="@+id/playerOneText"
-        android:layout_marginTop="65dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="invisible" />
-
-    <TextView
         android:id="@+id/playerTwoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -195,6 +193,17 @@
         android:layout_alignBaseline="@+id/playerThreeText"
         android:layout_alignBottom="@+id/playerThreeText"
         android:layout_alignLeft="@+id/playerTwoText"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/playerThreeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/playerOneText"
+        android:layout_below="@+id/playerOneText"
+        android:layout_marginTop="54dp"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:visibility="invisible" />
