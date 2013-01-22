@@ -18,11 +18,17 @@ public class HammerGame extends Game{
 		marks.add(20);
 		marks.add(19);
 		marks.add(18);
-		marks.add(rng.nextInt(9) + 13);
+		Integer temp1 = rng.nextInt(9) + 13;
+		if(temp1 == 21)
+			temp1 = 25;
+		marks.add(temp1);
 		marks.add(17);
 		marks.add(16);
 		marks.add(15);
-		marks.add(rng.nextInt(9) + 13);
+		Integer temp2 = rng.nextInt(9) + 13;
+		if(temp2 == 21)
+			temp2 = 25;
+		marks.add(temp2);
 		
 		super.setMarks(marks);
 	}

@@ -26,6 +26,9 @@ public class Player implements Parcelable{
 		this.score = score;
 	}
 	
+	public void addToScore(int score){
+		this.score += score;
+	}
 	//Standard Constructor
 	public Player(String name){
 		this.name = name;

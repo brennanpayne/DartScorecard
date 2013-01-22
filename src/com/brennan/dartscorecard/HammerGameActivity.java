@@ -108,7 +108,11 @@ public class HammerGameActivity extends Activity {
 		for(int i = 0; i < players.size(); i++){
 			TextView tv = playersText.get(i);
 			tv.setVisibility(View.VISIBLE);
-			tv.setText(players.get(i).getName()  + "\nScore: 0" ) ;
+			//Trolling roommate
+			if(players.get(i).getName().equalsIgnoreCase("nick"))
+				tv.setText(players.get(i).getName()  + "\nScore: -1000");
+			else
+				tv.setText(players.get(i).getName()  + "\nScore: 0" ) ;
 		}
 
 		//Set up game and numTurns
@@ -140,11 +144,10 @@ public class HammerGameActivity extends Activity {
 				checkDartButtons(v, dartThreeButtons);
 				break;
 			}
-
-
 		}
 	};
 
+	//Checks if the selected button should be selected or unselected
 	public void checkDartButtons(View v, ArrayList<Button> buttons){
 		for(int i = 0; i < buttons.size(); i++){
 			if(buttons.get(i).getId() == v.getId() && buttons.get(i).getTag() != SELECTED_TAG){
@@ -154,7 +157,8 @@ public class HammerGameActivity extends Activity {
 				clearDart(buttons.get(i));			
 		}
 	}
-	
+
+	//Clears all darts of color and tag
 	public void clearDarts(){
 		for(int i = 0; i < dartOneButtons.size(); i++){
 			clearDart(dartOneButtons.get(i));
@@ -162,7 +166,8 @@ public class HammerGameActivity extends Activity {
 			clearDart(dartThreeButtons.get(i));
 		}
 	}
-	
+
+	//Clears the specific dart of color and tag
 	public void clearDart(Button b){
 		b.setBackgroundColor(getResources().getColor(R.color.white));
 		b.setTag(UNSELECTED_TAG);
@@ -183,23 +188,17 @@ public class HammerGameActivity extends Activity {
 			currentPlayer = numTurns % players.size();
 			Log.v(TAG, "CurrentPlayer: " + currentPlayer + ", Turn: " + numTurns);
 
+			prepareNextTurn();
+
 			if(currentPlayer == 0){
 				game.setCurrentRound(game.getCurrentRound() + 1);				
 
-				if(!(game.getCurrentRound() >= game.getMarks().size() * players.size())){
-					round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
-				}
-
-				Log.v(TAG, "Round: " + game.getCurrentRound());
-				checkMultiplers();
+				if(!(game.getCurrentRound() >= game.getMarks().size() * players.size()))
+					setRoundText();
 			}	
-			clearDarts();
-			updatePlayerScore(currentPlayer);
 		}
 	};
-
-
-
+	
 	View.OnClickListener prevTurnHandler = new View.OnClickListener() {
 
 		//Goes to the previous round or player
@@ -214,16 +213,15 @@ public class HammerGameActivity extends Activity {
 			currentPlayer = numTurns % players.size();
 			Log.v(TAG, "CurrentPlayer: " + currentPlayer + ", Turn: " + numTurns);
 
+			prepareNextTurn();
+			
 			if(currentPlayer == players.size() - 1 || players.size() == 0){				
+
 				if(game.getCurrentRound() != 0)
 					game.setCurrentRound(game.getCurrentRound() - 1);
 
-				Log.v(TAG, "Round: " + game.getCurrentRound());	
-				round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
-				checkMultiplers();		
-			}	
-			clearDarts();
-			updatePlayerScore(currentPlayer);
+				setRoundText();
+			}		
 		}
 	};
 
@@ -234,11 +232,55 @@ public class HammerGameActivity extends Activity {
 		return true;
 	}
 
-	public void updatePlayerScore(int index){
-		TextView playerName = playersText.get(index);
-		playerName.setText(players.get(index).getName() + "\nScore: " + (players.get(index).getScore() ));
+	//Gets the views ready for the next turn
+	public void prepareNextTurn(){
+		int tempScore = 0, multiplier2 = -1, multiplier3 = -1;
+		if(game.getCurrentRound() == game.getMarks().size() - 1){
+			multiplier2 = 3;
+			multiplier3 = 5;
+		}else{
+			multiplier2 = 2;
+			multiplier3 = 3;
+		}
+		
+		for(int i = 0; i < 3; i++){
+			
+			//Multiplier is the round multiplier, (i+1) is the row multiplier 
+			//ie the third row is all x3 darts (darts that hit a triple score)
+			if(dartOneButtons.get(i).getTag() == SELECTED_TAG)
+				tempScore += (i+1) * game.getMarks().get(game.getCurrentRound());
+			if(dartTwoButtons.get(i).getTag() == SELECTED_TAG)
+				tempScore += (i+1) * multiplier2 * game.getMarks().get(game.getCurrentRound());
+			if(dartThreeButtons.get(i).getTag() == SELECTED_TAG)
+				tempScore += (i+1) * multiplier3 * game.getMarks().get(game.getCurrentRound());
+		}
+		if(tempScore == 0){
+			tempScore = -1 * (game.getMarks().get(game.getCurrentRound()) * 3);
+		}
+		updatePlayerScore(tempScore);
+		clearDarts();
 	}
 
+	//Set's the round text and multiplier text
+	public void setRoundText(){
+		Integer mark = game.getMarks().get((game.getCurrentRound()));
+		if(mark == 25)
+			round_mark.setText("B");
+		else
+			round_mark.setText(mark.toString());
+		checkMultiplers();		
+		
+		Log.v(TAG, "Round: " + game.getCurrentRound());
+	}
+	
+	//Updates the player's score
+	public void updatePlayerScore(int score){
+		TextView playerName = playersText.get(currentPlayer);
+		players.get(currentPlayer).addToScore(score);
+		playerName.setText(players.get(currentPlayer).getName() + "\nScore: " + (players.get(currentPlayer).getScore() ));
+	}
+
+	//Checks to see if the multipliers need to be updated
 	public void checkMultiplers(){
 		if(game.getCurrentRound() == 7){
 			dart2_text.setText("x3");
