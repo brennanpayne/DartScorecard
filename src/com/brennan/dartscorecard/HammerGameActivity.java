@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,9 +21,9 @@ public class HammerGameActivity extends Activity {
 	private static final String TAG = "HammerGameActivity";
 	private TextView round_mark, dart2_text, dart3_text;
 	private RelativeLayout mRelativeLayout;
-	ArrayList<Player> players;
-	private ArrayList<String> playerNames;
-	private int numTurns;
+	private ArrayList<Player> players;
+	private ArrayList<TextView> playersText;
+	private int numTurns, currentPlayer;
 	private Button nextTurnButton, prevTurnButton;
 	HammerGame game;
 
@@ -39,23 +37,13 @@ public class HammerGameActivity extends Activity {
 			players = extras.getParcelableArrayList("players");
 		}
 
-		Log.v(TAG,"Recived players in Hammer Game");
-		playerNames = new ArrayList<String>();
 		
-		for(int i = 0; i < players.size(); i++)
-			playerNames.add(players.get(i).getName());
-		
-
-		game = new HammerGame();
-		game.addPlayers(players);
-		numTurns = 0;
 		setContentView(R.layout.activity_hammer_game);
-
 		
 		mRelativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 		round_mark = (TextView) findViewById(R.id.round_mark);
 		dart2_text = (TextView) findViewById(R.id.dart2_text);
-		dart3_text = (TextView) findViewById(R.id.dart3_text);
+		dart3_text = (TextView) findViewById(R.id.dart3_text);		
 
 		nextTurnButton = (Button) findViewById(R.id.next_turn_button);
 		nextTurnButton.setOnClickListener(nextTurnHandler);
@@ -64,7 +52,29 @@ public class HammerGameActivity extends Activity {
 		prevTurnButton.setEnabled(false);
 		prevTurnButton.setOnClickListener(prevTurnHandler);
 		
+		TextView tv1 = (TextView) findViewById(R.id.playerOneText);
+		//TODO: This doesn't really make any sense...
+		TextView tv2 = (TextView) findViewById(R.id.playerTwoText);
+		TextView tv3 = (TextView) findViewById(R.id.playerThreeText);
+		TextView tv4 = (TextView) findViewById(R.id.playerFourText);
 		
+		playersText = new ArrayList<TextView>();
+		playersText.add(tv1);
+		playersText.add(tv2);
+		playersText.add(tv3);
+		playersText.add(tv4);
+		
+		for(int i = 0; i < players.size(); i++){
+			TextView tv = playersText.get(i);
+			tv.setVisibility(View.VISIBLE);
+			tv.setText(players.get(i).getName()  + "\nScore: 0" ) ;
+		}
+		
+		game = new HammerGame();
+		game.addPlayers(players);
+		numTurns = 0;
+		currentPlayer = -1;
+
 	}
 
 	/*
@@ -79,9 +89,10 @@ public class HammerGameActivity extends Activity {
 				nextTurnButton.setEnabled(false);
 			prevTurnButton.setEnabled(true);
 			
-			Log.v(TAG, "Mod: " + numTurns % players.size() + ", Turn: " + numTurns + ", Size: " + (game.getMarks().size() * players.size()));
+			currentPlayer = numTurns % players.size();
+			Log.v(TAG, "CurrentPlayer: " + currentPlayer + ", Turn: " + numTurns);
 			
-			if(numTurns % players.size() == 0 ){
+			if(currentPlayer == 0){
 				game.setCurrentRound(game.getCurrentRound() + 1);
 				
 				Log.v(TAG, "Round: " + game.getCurrentRound());
@@ -89,13 +100,10 @@ public class HammerGameActivity extends Activity {
 				if(!(game.getCurrentRound() >= game.getMarks().size() * players.size())){
 					round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
 				}
-
-
 				checkMultiplers();
-			}else{
-				
 			}
-			updatePlayerName();
+			
+			updatePlayerScore(currentPlayer);
 		}
 	};
 	
@@ -107,23 +115,25 @@ public class HammerGameActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			numTurns--;
+			
 			if(numTurns == 0)
 				prevTurnButton.setEnabled(false);
 			nextTurnButton.setEnabled(true);
 			
-			Log.v(TAG, "Mod: " + numTurns % players.size() + ", Turn: " + numTurns);
-			
+			currentPlayer = numTurns % players.size();
+			Log.v(TAG, "CurrentPlayer: " + currentPlayer + ", Turn: " + numTurns);
 
-			if(numTurns % players.size() == players.size() - 1){
+			if(currentPlayer == players.size() - 1 || players.size() == 0){
 				
-				if(numTurns != 0)
+				if(game.getCurrentRound() != 0)
 					game.setCurrentRound(game.getCurrentRound() - 1);
 				Log.v(TAG, "Round: " + game.getCurrentRound());	
+
+				round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
 				checkMultiplers();		
 			}
-			round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
 			
-			updatePlayerName();
+			updatePlayerScore(currentPlayer);
 		}
 	};
 
@@ -134,9 +144,9 @@ public class HammerGameActivity extends Activity {
 		return true;
 	}
 
-	public void updatePlayerName(){
-		TextView playerName = (TextView) findViewById(R.id.textView1);
-		playerName.setText(playerNames.get(numTurns % players.size()));
+	public void updatePlayerScore(int index){
+		TextView playerName = playersText.get(index);
+		playerName.setText(players.get(index).getName() + "\nScore: " + (players.get(index).getScore() ));
 	}
 
 	public void checkMultiplers(){
