@@ -150,11 +150,22 @@ public class HammerGameActivity extends Activity {
 			if(buttons.get(i).getId() == v.getId() && buttons.get(i).getTag() != SELECTED_TAG){
 				buttons.get(i).setBackgroundColor(getResources().getColor(R.color.light_green));
 				buttons.get(i).setTag(SELECTED_TAG);
-			}else{
-				buttons.get(i).setBackgroundColor(getResources().getColor(R.color.white));	
-				buttons.get(i).setTag(UNSELECTED_TAG);
-			}
+			}else
+				clearDart(buttons.get(i));			
 		}
+	}
+	
+	public void clearDarts(){
+		for(int i = 0; i < dartOneButtons.size(); i++){
+			clearDart(dartOneButtons.get(i));
+			clearDart(dartTwoButtons.get(i));
+			clearDart(dartThreeButtons.get(i));
+		}
+	}
+	
+	public void clearDart(Button b){
+		b.setBackgroundColor(getResources().getColor(R.color.white));
+		b.setTag(UNSELECTED_TAG);
 	}
 
 	/*
@@ -181,7 +192,8 @@ public class HammerGameActivity extends Activity {
 
 				Log.v(TAG, "Round: " + game.getCurrentRound());
 				checkMultiplers();
-			}			
+			}	
+			clearDarts();
 			updatePlayerScore(currentPlayer);
 		}
 	};
@@ -209,7 +221,8 @@ public class HammerGameActivity extends Activity {
 				Log.v(TAG, "Round: " + game.getCurrentRound());	
 				round_mark.setText(game.getMarks().get(game.getCurrentRound()).toString());
 				checkMultiplers();		
-			}			
+			}	
+			clearDarts();
 			updatePlayerScore(currentPlayer);
 		}
 	};
