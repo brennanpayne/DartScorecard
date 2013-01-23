@@ -193,10 +193,7 @@ public class HammerGameActivity extends Activity {
 			currentPlayer = numTurns % players.size();
 			int nextPlayer = (numTurns+1) % players.size();
 			
-			clearAllPlayerColor();
-			if(!done){
-				playersText.get(nextPlayer).setTextColor(getResources().getColor(R.color.light_green));
-			}
+
 			Log.v(TAG, "CurrentPlayer: " + (currentPlayer + 1) + ", CurrentTurn: " + numTurns);
 			
 			prevTurnButton.setEnabled(true);
@@ -215,6 +212,11 @@ public class HammerGameActivity extends Activity {
 				nextTurnButton.setEnabled(false);
 				//numTurns--;
 				done = true;
+			}
+			
+			clearAllPlayerColor();
+			if(!done){
+				playersText.get(nextPlayer).setTextColor(getResources().getColor(R.color.light_green));
 			}
 		}		
 	};
@@ -250,7 +252,6 @@ public class HammerGameActivity extends Activity {
 				prevTurnButton.setEnabled(false);
 			nextTurnButton.setEnabled(true);
 			
-
 		}
 	};
 
@@ -262,6 +263,10 @@ public class HammerGameActivity extends Activity {
 	}
 
 	public void preparePrevTurn(){
+		int prevPlayerIndex = (numTurns - 1) % players.size();
+		Player p = players.get(prevPlayerIndex);
+		p.setScore(p.getScore() - p.popRound());
+		updatePlayerScore(prevPlayerIndex);
 		clearDarts();
 	}
 	
@@ -290,7 +295,9 @@ public class HammerGameActivity extends Activity {
 		if(tempScore == 0){
 			tempScore = -1 * (game.getMarks().get(game.getCurrentRound()) * 3);
 		}
-		updatePlayerScore(tempScore);
+		players.get(currentPlayer).pushRound(tempScore);
+		players.get(currentPlayer).addToScore(tempScore);
+		updatePlayerScore(currentPlayer);
 		clearDarts();
 	}
 
@@ -307,10 +314,9 @@ public class HammerGameActivity extends Activity {
 	}
 	
 	//Updates the player's score
-	public void updatePlayerScore(int score){
-		TextView playerName = playersText.get(currentPlayer);
-		players.get(currentPlayer).addToScore(score);
-		playerName.setText(players.get(currentPlayer).getName() + "\nScore: " + (players.get(currentPlayer).getScore() ));
+	public void updatePlayerScore(int playerIndex){
+		TextView playerName = playersText.get(playerIndex);
+		playerName.setText(players.get(playerIndex).getName() + "\nScore: " + (players.get(playerIndex).getScore() ));
 	}
 
 	//Checks to see if the multipliers need to be updated

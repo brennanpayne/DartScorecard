@@ -1,5 +1,7 @@
 package com.brennan.gamelogic;
 
+import java.util.Stack;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -9,6 +11,19 @@ public class Player implements Parcelable{
 	
 	private int score;
 	private String name;
+	private Stack<Integer> rounds;
+	
+	public void pushRound(Integer round){
+		Log.v(TAG, "Push: " + round.toString());
+		rounds.push(round);
+	}
+	
+	public Integer popRound(){
+		Integer round = rounds.pop();
+		Log.v(TAG, "Pop: " + round.toString());
+
+		return round;
+	}
 	
 	public String getName() {
 		return name;
@@ -32,6 +47,7 @@ public class Player implements Parcelable{
 	//Standard Constructor
 	public Player(String name){
 		this.name = name;
+
 		this.score = 0;
 	}
 	
@@ -56,6 +72,7 @@ public class Player implements Parcelable{
 	public void readFromParcel(Parcel in){
 		score = in.readInt();
 		name = in.readString();
+		this.rounds = new Stack<Integer>();
 	}
 	
 	
