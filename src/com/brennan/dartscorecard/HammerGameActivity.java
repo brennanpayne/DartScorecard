@@ -122,7 +122,9 @@ public class HammerGameActivity extends Activity {
 		game = new HammerGame();
 		game.addPlayers(players);
 		numTurns = 0;
-		currentPlayer = -1;
+		currentPlayer = 0;
+		
+		playersText.get(0).setTextColor(getResources().getColor(R.color.light_green));
 
 	}
 
@@ -176,6 +178,11 @@ public class HammerGameActivity extends Activity {
 		b.setTag(UNSELECTED_TAG);
 	}
 
+	public void clearAllPlayerColor(){
+		for(int i = 0; i < players.size(); i++)
+			playersText.get(i).setTextColor(getResources().getColor(R.color.black));
+		
+	}
 	/*
 	 * Goes to the next turn or round
 	 */
@@ -184,6 +191,12 @@ public class HammerGameActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			currentPlayer = numTurns % players.size();
+			int nextPlayer = (numTurns+1) % players.size();
+			
+			clearAllPlayerColor();
+			if(!done){
+				playersText.get(nextPlayer).setTextColor(getResources().getColor(R.color.light_green));
+			}
 			Log.v(TAG, "CurrentPlayer: " + (currentPlayer + 1) + ", CurrentTurn: " + numTurns);
 			
 			prevTurnButton.setEnabled(true);
@@ -212,7 +225,13 @@ public class HammerGameActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 
-			currentPlayer = numTurns % players.size();
+			currentPlayer = numTurns % players.size();		
+			int nextPlayer = (numTurns+1) % players.size();
+			
+			clearAllPlayerColor();
+			if(numTurns !=0)
+				playersText.get(nextPlayer).setTextColor(getResources().getColor(R.color.light_green));
+			
 			Log.v(TAG, "CurrentPlayer: " + (currentPlayer + 1) + ", CurrentTurn: " + numTurns);
 		
 			preparePrevTurn();
