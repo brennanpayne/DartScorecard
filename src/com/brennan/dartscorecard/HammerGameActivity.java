@@ -228,11 +228,11 @@ public class HammerGameActivity extends Activity {
 		public void onClick(View v) {
 
 			currentPlayer = numTurns % players.size();		
-			int nextPlayer = (numTurns+1) % players.size();
+			int prevPlayer = (numTurns-1) % players.size();
 			
 			clearAllPlayerColor();
 			if(numTurns !=0)
-				playersText.get(nextPlayer).setTextColor(getResources().getColor(R.color.light_green));
+				playersText.get(prevPlayer).setTextColor(getResources().getColor(R.color.light_green));
 			
 			Log.v(TAG, "CurrentPlayer: " + (currentPlayer + 1) + ", CurrentTurn: " + numTurns);
 		
