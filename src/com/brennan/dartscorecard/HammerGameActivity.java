@@ -293,7 +293,10 @@ public class HammerGameActivity extends Activity {
 				tempScore += (i+1) * multiplier3 * game.getMarks().get(game.getCurrentRound());
 		}
 		if(tempScore == 0){
-			tempScore = -1 * (game.getMarks().get(game.getCurrentRound()) * 3);
+			if(game.getMarks().get(game.getCurrentRound()) == 25)
+				tempScore = -25;
+			else
+				tempScore = -1 * (game.getMarks().get(game.getCurrentRound()) * 3);
 		}
 		players.get(currentPlayer).pushRound(tempScore);
 		players.get(currentPlayer).addToScore(tempScore);
@@ -316,7 +319,9 @@ public class HammerGameActivity extends Activity {
 	//Updates the player's score
 	public void updatePlayerScore(int playerIndex){
 		TextView playerName = playersText.get(playerIndex);
-		playerName.setText(players.get(playerIndex).getName() + "\nScore: " + (players.get(playerIndex).getScore() ));
+		playerName.setText(players.get(playerIndex).getName() + "\nScore: " );
+		//if( (players.get(playerIndex).getScore() > 0)
+				//playerName.append( (players.get(playerIndex).getScore().toString() );
 	}
 
 	//Checks to see if the multipliers need to be updated
