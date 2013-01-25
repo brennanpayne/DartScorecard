@@ -10,17 +10,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/hammer_and_dart"
+        android:label="@string/my_app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.brennan.dartscorecard.LoginActivity"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
-        </activity>
-        <activity
             android:name="com.brennan.dartscorecard.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/my_app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
