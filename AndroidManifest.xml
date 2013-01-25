@@ -10,7 +10,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/hammer_and_dart"
+        android:icon="@drawable/dartboard_with_background"
         android:label="@string/my_app_name"
         android:theme="@style/AppTheme" >
         <activity

@@ -7,26 +7,6 @@
     android:layout_gravity="left"
     tools:context=".HammerGameActivity" >
 
-    <Button
-        android:id="@+id/prev_turn_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/next_turn_button"
-        android:layout_centerVertical="true"
-        android:text="Prev Turn" />
-
-    <Button
-        android:id="@+id/next_turn_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/prev_turn_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/round_title"
-        android:text="Next Turn" />
-
     <GridLayout
         android:id="@+id/dartButtons"
         android:layout_width="wrap_content"
@@ -203,12 +183,32 @@
         android:id="@+id/round_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/next_turn_button"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/dartButtons"
         android:text="@string/round_mark_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/red"
         android:textSize="120sp" />
+
+    <Button
+        android:id="@+id/next_turn_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/round_title"
+        android:layout_marginTop="164dp"
+        android:text="Next Turn" />
+
+    <Button
+        android:id="@+id/prev_turn_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/next_turn_button"
+        android:layout_below="@+id/next_turn_button"
+        android:text="Prev Turn" />
 
 </RelativeLayout>

@@ -1,10 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutSettings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity" 
-    android:id="@+id/relativeLayoutSettings"
-    >
+    tools:context=".SettingActivity" >
 
     <TextView
         android:id="@+id/settingsText"
@@ -15,80 +14,84 @@
         android:layout_marginTop="21dp"
         android:text="@string/settings_text" />
 
-    <EditText
-        android:id="@+id/playerOneInput"
+    <LinearLayout
+        android:id="@+id/playerInputs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/settingsText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:inputType="textPersonName" >
-        
-        <requestFocus />
-    </EditText>
+        android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/playerTwoInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/playerOneInput"
-        android:layout_below="@+id/playerOneInput"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-    
-    <EditText
-        android:id="@+id/playerThreeInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/playerTwoInput"
-        android:layout_below="@+id/playerTwoInput"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/playerOneInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/settingsText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/playerFourInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/playerThreeInput"
-        android:layout_below="@+id/playerThreeInput"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-    
+        <EditText
+            android:id="@+id/playerTwoInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/playerOneInput"
+            android:layout_below="@+id/playerOneInput"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/playerThreeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/playerTwoInput"
+            android:layout_below="@+id/playerTwoInput"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/playerFourInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/playerThreeInput"
+            android:layout_below="@+id/playerThreeInput"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/startButton"
+        style="@style/ButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/playerFourInput"
+        android:layout_below="@+id/playerInputs"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="@string/start_button"
-		android:background="@drawable/green_button"
-		style="@style/ButtonText"/>
+        android:layout_marginTop="30dp"
+        android:background="@drawable/green_button"
+        android:text="@string/start_button" />
 
     <Button
         android:id="@+id/addMorePlayersButton"
         style="@style/ButtonTextSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/playerOneInput"
-        android:layout_below="@+id/playerFourInput"
-        android:text="Add+" 
+        android:layout_alignRight="@+id/playerInputs"
+        android:layout_below="@+id/playerInputs"
         android:background="@drawable/green_button"
-		/>
+        android:text="Add+" />
 
     <Button
         android:id="@+id/lessPlayersButton"
         style="@style/ButtonTextSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/playerFourInput"
-        android:layout_alignLeft="@+id/playerOneInput"
-        android:text="Less-" 
+        android:layout_below="@+id/playerInputs"
+        android:layout_toLeftOf="@+id/startButton"
         android:background="@drawable/green_button"
-		/>
+        android:text="Less-" />
 
 </RelativeLayout>
