@@ -4,208 +4,200 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="left"
     tools:context=".HammerGameActivity" >
 
-    <TextView
-        android:id="@+id/round_title"
+    
+
+    <Button android:id="@+id/prev_turn_button" style="?android:attr/buttonStyleSmall" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignRight="@+id/next_turn_button" android:layout_centerVertical="true" android:text="Prev Turn" /><Button
+        android:id="@+id/next_turn_button"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/prev_turn_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/round_title"
+        android:text="Next Turn" />
+
+    <GridLayout
+        android:id="@+id/playerScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prev_turn_button"
         android:layout_centerHorizontal="true"
-        android:text="@string/round_title_text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="41dp"
+        android:columnCount="2"
+        android:paddingBottom="10sp" >
+
+        <TextView
+            android:id="@+id/playerThreeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="right|bottom"
+            android:layout_row="1"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/playerOneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="left|bottom"
+            android:layout_marginTop="26dp"
+            android:layout_row="0"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/playerTwoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_gravity="left|bottom"
+            android:layout_row="0"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/playerFourText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_gravity="left|bottom"
+            android:layout_marginTop="28dp"
+            android:layout_row="1"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="invisible" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/dartButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/playerScores"
+        android:layout_alignParentRight="true"
+        android:columnCount="3"
+        android:padding="10sp" >
+
+        <ImageView
+            android:id="@+id/dartPicture1"
+            android:layout_width="42dp"
+            android:layout_height="55dp"
+            android:layout_gravity="left"
+            android:src="@drawable/dart_rotated" />
+
+        <ImageView
+            android:id="@+id/dartPicture2"
+            android:layout_width="42dp"
+            android:layout_height="55dp"
+            android:layout_gravity="left"
+            android:src="@drawable/dart_rotated" />
+
+        <ImageView
+            android:id="@+id/dartPicture3"
+            android:layout_width="42dp"
+            android:layout_height="55dp"
+            android:layout_gravity="left"
+            android:src="@drawable/dart_rotated" />
+
+        <Button
+            android:id="@+id/dart1times1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x1" />
+
+        <Button
+            android:id="@+id/dart2times1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x1" />
+
+        <Button
+            android:id="@+id/dart3times1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x1" />
+
+        <Button
+            android:id="@+id/dart1times2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x2" />
+
+        <Button
+            android:id="@+id/dart2times2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x2" />
+
+        <Button
+            android:id="@+id/dart3times2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@color/white"
+            android:text="x2" />
+
+        <Button
+            android:id="@+id/dart1times3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x3" />
+
+        <Button
+            android:id="@+id/dart2times3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x3" />
+
+        <Button
+            android:id="@+id/dart3times3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="x3" />
+    </GridLayout>
 
     <TextView
         android:id="@+id/round_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/round_title"
-        android:layout_marginLeft="17dp"
+        android:layout_alignRight="@+id/round_title"
+        android:layout_alignTop="@+id/dartButtons"
         android:text="@string/round_mark_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/red"
-        android:textSize="80sp" />
-
-    <Button
-        android:id="@+id/next_turn_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/round_mark"
-        android:layout_below="@+id/round_mark"
-        android:text="Next Turn" />
-
-    <Button
-        android:id="@+id/prev_turn_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart1times3"
-        android:layout_alignBottom="@+id/dart1times3"
-        android:layout_alignRight="@+id/next_turn_button"
-        android:text="Prev Turn" />
-
-    <Button
-        android:id="@+id/dart2times1"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart1times1"
-        android:layout_alignBottom="@+id/dart1times1"
-        android:layout_alignRight="@+id/round_title"
-        android:text="x1" />
-
-    <Button
-        android:id="@+id/dart3times1"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart2times1"
-        android:layout_alignBottom="@+id/dart2times1"
-        android:layout_toRightOf="@+id/dart2times1"
-        android:text="x1" />
-
-    <Button
-        android:id="@+id/dart1times2"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dart2times1"
-        android:layout_toLeftOf="@+id/dart2times1"
-        android:text="x2" />
-
-    <Button
-        android:id="@+id/dart3times2"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart1times2"
-        android:layout_alignBottom="@+id/dart1times2"
-        android:layout_alignLeft="@+id/dart3times1"
-        android:text="x2" />
-
-    <Button
-        android:id="@+id/dart2times2"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart3times2"
-        android:layout_alignBottom="@+id/dart3times2"
-        android:layout_toLeftOf="@+id/dart3times2"
-        android:text="x2" />
-
-    <Button
-        android:id="@+id/dart1times3"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dart1times2"
-        android:layout_toLeftOf="@+id/dart2times2"
-        android:text="x3" />
-
-    <Button
-        android:id="@+id/dart3times3"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dart3times2"
-        android:layout_below="@+id/dart3times2"
-        android:text="x3" />
-
-    <Button
-        android:id="@+id/dart2times3"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart3times3"
-        android:layout_alignBottom="@+id/dart3times3"
-        android:layout_toLeftOf="@+id/dart3times3"
-        android:text="x3" />
-
-    <Button
-        android:id="@+id/dart1times1"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/next_turn_button"
-        android:layout_toLeftOf="@+id/dart2times1"
-        android:text="x1" />
-
-    <TextView android:id="@+id/dart1_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@+id/dart1times1" android:layout_centerHorizontal="true" android:text="x1" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/light_green" /><TextView
-        android:id="@+id/dart2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart1_text"
-        android:layout_alignBottom="@+id/dart1_text"
-        android:layout_alignLeft="@+id/dart2times1"
-        android:layout_marginLeft="14dp"
-        android:text="x2"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/light_green" />
+        android:textSize="120sp" />
 
     <TextView
-        android:id="@+id/dart3_text"
+        android:id="@+id/round_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dart2_text"
-        android:layout_alignBottom="@+id/dart2_text"
-        android:layout_alignRight="@+id/dart3times1"
-        android:layout_marginRight="14dp"
-        android:text="x3"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/light_green" /> 
-
-    <TextView
-        android:id="@+id/playerOneText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/prev_turn_button"
-        android:layout_below="@+id/prev_turn_button"
-        android:layout_marginTop="40dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/playerTwoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/playerThreeText"
-        android:layout_alignRight="@+id/dart3times3"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/playerFourText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/playerThreeText"
-        android:layout_alignBottom="@+id/playerThreeText"
-        android:layout_alignLeft="@+id/playerTwoText"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/playerThreeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/playerOneText"
-        android:layout_below="@+id/playerOneText"
-        android:layout_marginTop="54dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="invisible" />
+        android:layout_above="@+id/round_mark"
+        android:layout_alignParentLeft="true"
+        android:text="@string/round_title_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

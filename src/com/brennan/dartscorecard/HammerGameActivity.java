@@ -50,8 +50,8 @@ public class HammerGameActivity extends Activity {
 		
 		//Round and multiplier text
 		round_mark = (TextView) findViewById(R.id.round_mark);
-		dart2_text = (TextView) findViewById(R.id.dart2_text);
-		dart3_text = (TextView) findViewById(R.id.dart3_text);		
+		//dart2_text = (TextView) findViewById(R.id.dart2_text);
+		//dart3_text = (TextView) findViewById(R.id.dart3_text);		
 
 		//Next Turn button
 		nextTurnButton = (Button) findViewById(R.id.next_turn_button);
@@ -311,7 +311,7 @@ public class HammerGameActivity extends Activity {
 			round_mark.setText("25");
 		else
 			round_mark.setText(mark.toString());
-		checkMultiplers();		
+		//checkMultiplers();		
 		
 		Log.v(TAG, "Round: " + game.getCurrentRound());
 	}
@@ -319,9 +319,10 @@ public class HammerGameActivity extends Activity {
 	//Updates the player's score
 	public void updatePlayerScore(int playerIndex){
 		TextView playerName = playersText.get(playerIndex);
-		playerName.setText(players.get(playerIndex).getName() + "\nScore: " );
+		playerName.setText(players.get(playerIndex).getName() + "\nScore: " + (players.get(playerIndex).getScore()));
+		//playerName.append( );
 		//if( (players.get(playerIndex).getScore() > 0)
-				//playerName.append( (players.get(playerIndex).getScore().toString() );
+				//
 	}
 
 	//Checks to see if the multipliers need to be updated
