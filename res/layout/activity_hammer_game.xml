@@ -127,21 +127,21 @@
             android:layout_width="42dp"
             android:layout_height="55dp"
             android:layout_gravity="left"
-            android:src="@drawable/dart_rotated" />
+            android:src="@drawable/dart_1" />
 
         <ImageView
             android:id="@+id/dartPicture2"
             android:layout_width="42dp"
             android:layout_height="55dp"
             android:layout_gravity="left"
-            android:src="@drawable/dart_rotated" />
+            android:src="@drawable/dart_2" />
 
         <ImageView
             android:id="@+id/dartPicture3"
             android:layout_width="42dp"
             android:layout_height="55dp"
             android:layout_gravity="left"
-            android:src="@drawable/dart_rotated" />
+            android:src="@drawable/dart_3" />
 
         <Button
             android:id="@+id/dart1times1"
